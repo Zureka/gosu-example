@@ -1,15 +1,13 @@
 require 'gosu'
 
 class Player
+  attr_reader :score
+
   def initialize
     @image = Gosu::Image.new("media/starfighter.bmp")
     @beep = Gosu::Sample.new("media/beep.wav")
     @x = @y = @vel_x = @vel_y = @angle = 0.0
     @score = 0
-  end
-
-  def score
-    @score
   end
 
   def collect_stars(stars)
@@ -24,8 +22,9 @@ class Player
     end
   end
 
-  def warp(x, y)
-    @x, @y, = x, y
+  def warp(new_x, new_y)
+    @x = new_x
+    @y = new_y
   end
 
   def turn_left
